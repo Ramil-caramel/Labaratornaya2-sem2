@@ -74,7 +74,7 @@ class String {
   /// </example>
   /// <param name="index"> Индекс символа </param>
   /// <returns> Значение символа в строке с индексом index</returns>
-  char operator[](size_t index) const;
+  char operator[](size_t index) const; //+
 
   /// Оператор []
   /// <example>
@@ -85,7 +85,7 @@ class String {
   /// </example>
   /// <param name="index"> Индекс символа </param>
   /// <returns> Ссылка на символ в строке с индексом index</returns>
-  char& operator[](size_t index);
+  char& operator[](size_t index);   //+
 
   /// Смотри пример
   /// <example>
@@ -107,7 +107,7 @@ class String {
   /// <param name="symbol"> Значение символов, которе отрезаем </param>
   void LTrim(char symbol);
 
-  void swap(String& oth);
+  void swap(String& oth); //+
 
   friend std::ostream& operator<<(std::ostream&, const String&);    //++
 

@@ -177,6 +177,66 @@ bool operator>(const String& a, const String& b){
     return 1;
 }
 
+char String::operator[](size_t index) const{
+    return Data[index];
+}
+
+char& String::operator[](size_t index){
+    return Data[index];
+}
+
+void String::swap(String& oth){
+    String copy = oth;
+    oth = *this;
+    *this = copy;
+}
+
+void String::LTrim(char symbol){
+
+    int count = 0;
+    for (int i = 0; i < Size(); i++){
+        if (Data[i] == symbol){
+            count ++;
+        }
+        else{
+            break;
+        } 
+    }
+    if (count == Size()){
+        Data = nullptr;
+        return;
+    }
+
+    char *Data1 = new char[Size() - count + 1];
+    for (int i = count; i < Size(); i++)
+        Data1[i - count] = Data[i];
+    delete[] Data;
+    Data = Data1;
+    Data[Size() - count] = '\0';
+}
+
+void String::RTrim(char symbol){
+    int count = 0;
+    for (int i = Size(); i > 0; i--){
+        if (Data[i] == symbol){
+            count ++;
+        }
+        else{
+            break;
+        }   
+    }
+    if (count == Size()){
+        Data = nullptr;
+        return;
+    }
+    char *Data1 = new char[Size() - count + 1];
+    for (int i = 0; i < Size() - count; i++)
+        Data1[i] = Data[i];
+    delete[] Data;
+    Data = Data1;
+    Data[Size() - count] = '\0';
+}
+
 std::ostream& operator<<(std::ostream& out, const String& str) {
     out << str.Data;
     return out;
